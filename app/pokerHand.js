@@ -1,6 +1,24 @@
 var cardsValues = {};
 
-var parseHand = hand => hand.split(' ').map(x => [x.charAt(0), x.charAt(1)]);
+//var parseHand = hand => hand.split(' ').map(x => [x.charAt(0), x.charAt(1)]);
+
+function parseHand(hand) {
+    var cards = hand.split(' ');
+    var parsedCards = [];
+    for (var card of cards) {
+        var value;
+        var color;
+        if (card.length > 2) {
+          value = card.charAt(0) + card.charAt(1);
+          color = card.charAt(2);  
+        } else {
+            value = card.charAt(0);
+            color = card.charAt(1);
+        }
+        parsedCards.push([value, color])
+     }
+     return parsedCards;
+}
 
 function initCardsValue() {
     cardsValues['2'] = 2;
@@ -108,7 +126,7 @@ function fourOfAKind(parsedHand) {
 function main() {
     console.log('Le jeu de poker commence')
     initCardsValue();
-    startGame('2H 3D 5S 2C KD', '2C 3H 4S 8C AH');
+    startGame('10H 3D 5S 2C KD', '2C 3H 4S 8C AH');
     console.log('Fin du jeu');
 }
 

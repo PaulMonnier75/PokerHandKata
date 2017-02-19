@@ -3,7 +3,7 @@ var game = require("../app/pokerHand");
 
 describe("Poker Hand Tests", function() {
 
-    var firstHand = "2H 3D 5S 9C KD";
+    var firstHand = "10H 3D 5S 9C KD";
     var secondHand = "2C 3H 4S 8C AH";
 
     it("Start Game Function", function() {
@@ -11,7 +11,7 @@ describe("Poker Hand Tests", function() {
     });
 
     it("Parse Hand Function", function() {
-        var expectedResult = [['2','H'], ['3','D'], ['5','S'], ['9','C'], ['K','D']]
+        var expectedResult = [['10','H'], ['3','D'], ['5','S'], ['9','C'], ['K','D']]
         expect(game.parseHand(firstHand)).to.eql(expectedResult);
     });
 
@@ -51,11 +51,11 @@ describe("Poker Hand Tests", function() {
     });
 
     it("Check Three Of A Kind Function", function() {
-        var parsedHand = [['3','H'], ['3','D'], ['K','S'], ['K','C'], ['K','D']]
+        var parsedHand = [['10','H'], ['10','D'], ['K','S'], ['K','C'], ['K','D']]
         var expectedResult = 'K';
         var nbOccurences = {};
         nbOccurences['K'] = 3;
-        nbOccurences['3'] = 2;
+        nbOccurences['10'] = 2;
         expect(game.threeOfAKind(parsedHand, nbOccurences)).to.eql(expectedResult);
     });
 
